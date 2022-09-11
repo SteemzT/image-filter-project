@@ -30,15 +30,15 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
   /**************************************************************************** */
   // validate the image query
   app.get( "/filteredimage", async( req, res ) => {
-    const image:string = req.query.image;
+    const image_url:string = req.query.image_url;
 
   // send error message if url is not inputed
-  if (!image) {
+  if (!image_url) {
     return res.status(400).send('No url, please input image url');
   }
 
   // call filterImageFromURL function to filter image
-    const filteredImage = await filterImageFromURL(image);
+    const filteredImage = await filterImageFromURL(image_url);
    // send result of filtered image 
     res.status(200).sendFile(filteredImage,() => {
    
